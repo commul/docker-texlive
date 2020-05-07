@@ -3,7 +3,7 @@
 # thorwink/texlive:2019-minimal
 #
 
-ARG UBUNTU_IMG_VERSION=19.04
+ARG UBUNTU_IMG_VERSION
 FROM ubuntu:$UBUNTU_IMG_VERSION
 LABEL maintainer="Thorsten Winkler <https://github.com/thorsten-winkler>"
 
@@ -16,7 +16,8 @@ ENV PERSISTENT_DEPS \
     gpg \
     perl \
     vim \
-    wget
+    wget \
+    gpg
 
 ARG TL_PROFILE=texlive-2019-minimal.profile
 COPY $TL_PROFILE .
