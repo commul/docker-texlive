@@ -29,9 +29,9 @@ ENV INFOPATH $INFOPATH:/usr/local/texlive/2019/texmf-dist/doc/info
 RUN apt update -y && apt upgrade -y && mkdir -p /docs && \
     apt install -y $PERSISTENT_DEPS && \
     # TL installation
-    wget http://mirror.ctan.org/systems/texlive/tlnet/install-tl-unx.tar.gz && \
+    wget ftp://ftp.tu-chemnitz.de/pub/tug/historic/systems/texlive/2019/tlnet-final/install-tl-unx.tar.gz && \
     tar xfz install-tl-unx.tar.gz --strip-components=1 && \
-    ./install-tl --profile=$TL_PROFILE
+    ./install-tl --repository ftp://ftp.tu-chemnitz.de/pub/tug/historic/systems/texlive/2019/tlnet-final --profile=$TL_PROFILE
 
 WORKDIR /docs
 
