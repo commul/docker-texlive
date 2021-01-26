@@ -50,13 +50,15 @@ docker:
         apt remove --purge -y
 
     ARG EARTHLY_TARGET_TAG
+    ARG VERSION=$EARTHLY_TARGET_TAG
     ARG EARTHLY_GIT_HASH
+    ARG GIT_HASH=$EARTHLY_GIT_HASH
     LABEL org.label-schema.schema-version="1.0" \  # http://label-schema.org/rc1/
-          org.label-schema.version="$EARTHLY_TARGET_TAG" \
+          org.label-schema.version="$VERSION" \
           org.label-schema.vcs-url="$LABEL_VCS_URL" \
-          org.commul.git-hash="$EARTHLY_GIT_HASH" \
+          org.commul.git-hash="$GIT_HASH" \
           org.commul.registry-url="$COMMUL_REGISTRY_URL" \
           org.commul.docker-url="$DOCKER_URL"
     
     SAVE IMAGE --push "$DOCKER_URL:latest"
-    SAVE IMAGE --push "$DOCKER_URL:$EARTHLY_TARGET_TAG"
+    SAVE IMAGE --push "$DOCKER_URL:$VERSION"
